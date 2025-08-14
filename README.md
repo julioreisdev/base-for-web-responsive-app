@@ -33,7 +33,7 @@ Certifique-se de ter o `Node.js` e o `npm` instalados em sua máquina.
 
     ```bash
     git clone [https://github.com/julioreisdev/base-for-web-responsive-app.git](https://github.com/julioreisdev/base-for-web-responsive-app.git)
-    cd seu-repositorio
+    cd base-for-web-responsive-app
     ```
 
 2. **Instale as dependências:**
