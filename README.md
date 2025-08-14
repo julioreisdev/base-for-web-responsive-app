@@ -52,6 +52,16 @@ Certifique-se de ter o `Node.js` e o `npm` instalados em sua máquina.
 
 ---
 
+## Estrutura de Rotas
+
+- **/**: Login
+- **/signup**: Cadastro
+- **/whatsapp-verify**: Confirmar código de WhatsApp
+- **/restore-password**: Recuperar acesso
+- **/home**: Página inicial
+
+---
+
 ## Estrutura do Projeto
 
 ```

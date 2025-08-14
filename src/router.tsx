@@ -17,6 +17,12 @@ const SignUpPage = React.lazy(() => import("./pages/auth/sign-up-page"));
 
 //dash
 const Home = React.lazy(() => import("./pages/dashboard/home"));
+const RestorePasswordPage = React.lazy(
+  () => import("./pages/auth/restore-password-page")
+);
+const VerifyCodePage = React.lazy(
+  () => import("./pages/auth/verify-code-page")
+);
 
 const Router: FC = () => {
   const context = useContext(GlobalContext);
@@ -36,7 +42,7 @@ const Router: FC = () => {
           }
         />
         <Route
-          path="/cadastro"
+          path="/signup"
           element={
             <Suspense
               fallback={<LazyLoading color={context?.colors.text || ""} />}
@@ -47,8 +53,8 @@ const Router: FC = () => {
             </Suspense>
           }
         />
-        {/* <Route
-          path="/esqueci-minha-senha"
+        <Route
+          path="/restore-password"
           element={
             <Suspense
               fallback={<LazyLoading color={context?.colors.text || ""} />}
@@ -62,7 +68,7 @@ const Router: FC = () => {
         />
 
         <Route
-          path="/esqueci-minha-senha/verificacao"
+          path="/whatsapp-verify"
           element={
             <Suspense
               fallback={<LazyLoading color={context?.colors.text || ""} />}
@@ -73,7 +79,7 @@ const Router: FC = () => {
               </UnProtectedRoute>
             </Suspense>
           }
-        /> */}
+        />
 
         <Route
           path="/dashboard/*"

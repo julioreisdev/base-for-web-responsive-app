@@ -107,7 +107,7 @@ const LoginPage: FC = () => {
             {" "}
             <p>Não tem uma conta?</p>
             <Link
-              to={"/cadastro"}
+              to={"/signup"}
               style={{ color: context?.colors.blue, textDecoration: "none" }}
             >
               Cadastre-se
@@ -132,12 +132,12 @@ const LoginPage: FC = () => {
               <p style={{ fontSize: "0.8rem" }}>Entre com o Google</p>
             </Box>
           </Box>
-          {/* <Link
+          <Link
             style={{ color: context?.colors.text, fontSize: "0.8rem" }}
-            to={"/esqueci-minha-senha"}
+            to={"/restore-password"}
           >
             Esqueci minha senha
-          </Link> */}
+          </Link>
         </Box>
       </Box>
     </CenterBox>

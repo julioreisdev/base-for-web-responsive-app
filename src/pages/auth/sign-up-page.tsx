@@ -2,7 +2,7 @@ import { FC, useContext } from "react";
 import CenterBox from "../../components/style/center-box";
 import { Box } from "@mui/material";
 import { GlobalContext } from "../../contexts/global-context";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { InputApp } from "../../components/style/inputs";
 import { LoadingButton } from "@mui/lab";
 import Lottie from "react-lottie";
@@ -20,6 +20,7 @@ const options = {
 
 const SignUpPage: FC = () => {
   const context = useContext(GlobalContext);
+  const navigate = useNavigate();
   return (
     <CenterBox style={{ flexDirection: "column" }} overflow={35.19}>
       <h3 style={{ textAlign: "center", width: " 80%" }}>
@@ -49,6 +50,10 @@ const SignUpPage: FC = () => {
         >
           <h3 style={{ color: context?.colors.blue }}>Título</h3>
           <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              navigate("/whatsapp-verify");
+            }}
             style={{
               display: "flex",
               flexDirection: "column",
@@ -58,7 +63,7 @@ const SignUpPage: FC = () => {
           >
             <InputApp
               id="register-name"
-              type={"email"}
+              type={"text"}
               placeholder="Nome"
               required
               color={context?.colors.text}
