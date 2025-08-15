@@ -8,6 +8,7 @@ import { LoadingButton } from "@mui/lab";
 import Lottie from "react-lottie";
 import LoginLutties from "../../utils/login-lotties";
 import getRandomInt from "../../utils/random";
+import GoogleLoginComponent from "../../components/auth/google-oauth";
 
 const options = {
   loop: true,
@@ -113,24 +114,7 @@ const LoginPage: FC = () => {
               Cadastre-se
             </Link>
             <p>ou</p>
-            <Box
-              sx={{
-                display: "flex",
-                alignItems: "center",
-                gap: "0.2rem",
-                border: `1px solid ${context?.colors.text}`,
-                padding: "0 0.3rem",
-                borderRadius: "8px",
-                cursor: "pointer",
-              }}
-            >
-              <img
-                style={{ width: "1.5rem" }}
-                src="https://cdn1.iconfinder.com/data/icons/google-s-logo/150/Google_Icons-09-512.png"
-                alt="Logo do Google"
-              />
-              <p style={{ fontSize: "0.8rem" }}>Entre com o Google</p>
-            </Box>
+            <GoogleLoginComponent />
           </Box>
           <Link
             style={{ color: context?.colors.text, fontSize: "0.8rem" }}
