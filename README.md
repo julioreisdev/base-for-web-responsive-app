@@ -16,7 +16,7 @@ Este projeto já vem com uma estrutura robusta e funcional, incluindo:
 - **Componentização:** Uma estrutura de componentes organizada, facilitando a reutilização de código e a manutenção.
 - **Context API:** Estrutura de `context` para gerenciar o estado global da aplicação de forma eficiente.
 - **Tecnologias Modernas:** Desenvolvido com **React** e **Vite**, garantindo um ambiente de desenvolvimento rápido e moderno.
-- - **Login Facilitado:** Desenvolvido com o Google OAuth.
+- **Login Facilitado:** Desenvolvido com o Google OAuth.
 
 ---
 
