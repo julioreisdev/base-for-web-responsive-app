@@ -19,8 +19,8 @@ import FlexEndBox from "../style/flex-end-box";
 import { GlobalContext } from "../../contexts/global-context";
 import Icons from "../style/icons/icons";
 import SidebarList from "../../utils/sidebar-list";
-import { Link } from "react-router-dom";
-import { Menu, MenuItem } from "@mui/material";
+import { Link, useNavigate } from "react-router-dom";
+import { Menu, MenuItem, Typography } from "@mui/material";
 import { logout } from "../../utils/auth";
 
 const drawerWidth = 240;
@@ -124,6 +124,8 @@ interface IProps {
 }
 
 const Sidebar: React.FC<IProps> = ({ children }) => {
+  const navigate = useNavigate();
+
   const width = window.innerWidth;
   const context = React.useContext(GlobalContext);
   const theme = useTheme();
@@ -244,10 +246,15 @@ const Sidebar: React.FC<IProps> = ({ children }) => {
         <Divider />
         <List>
           {SidebarList.map((item, index) => (
-            <Link
+            <Box
               key={`${item.route}${index}`}
               onClick={() => {
                 setRoute(item.route);
+                if (item.childrens?.length) {
+                  navigate(`/dashboard${item.route}${item.childrens[0].route}`);
+                } else {
+                  navigate(`/dashboard${item.route}`);
+                }
               }}
               style={{
                 textDecoration: "none",
@@ -256,7 +263,6 @@ const Sidebar: React.FC<IProps> = ({ children }) => {
                     ? context.colors.text
                     : context?.colors.background,
               }}
-              to={`/dashboard${item.route}`}
             >
               <ListItem
                 key={`${item.route}${index}`}
@@ -274,7 +280,10 @@ const Sidebar: React.FC<IProps> = ({ children }) => {
                   sx={[
                     {
                       minHeight: 48,
-                      px: 2.5,
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "flex-start",
+                      cursor: "default !important",
                     },
                     open
                       ? {
@@ -285,48 +294,126 @@ const Sidebar: React.FC<IProps> = ({ children }) => {
                         },
                   ]}
                 >
-                  <ListItemIcon
-                    sx={[
-                      {
-                        minWidth: 0,
-                        justifyContent: "center",
-                      },
-                      open
-                        ? {
-                            mr: 3,
-                          }
-                        : {
-                            mr: "auto",
-                          },
-                    ]}
+                  <Box
+                    sx={{
+                      display: "flex",
+                      alignItems: "center",
+                      width: "100%",
+                      cursor: "pointer",
+                    }}
                   >
-                    <IconButton>
-                      {React.createElement(item.icon, {
-                        sx: {
-                          color: route.includes(item.route)
-                            ? context?.colors.blueDark || ""
-                            : context?.theme === "dark"
-                            ? context.colors.text
-                            : context?.colors.background,
+                    <ListItemIcon
+                      sx={[
+                        {
+                          minWidth: 0,
+                          justifyContent: "center",
                         },
-                      })}
-                    </IconButton>
-                  </ListItemIcon>
-                  <ListItemText
-                    primary={item.name}
-                    sx={[
-                      open
-                        ? {
-                            opacity: 1,
-                          }
-                        : {
-                            opacity: 0,
+                        open
+                          ? {
+                              mr: 3,
+                            }
+                          : {
+                              mr: "auto",
+                            },
+                      ]}
+                    >
+                      <IconButton
+                        sx={{
+                          paddingLeft: "4px",
+                          "@media (max-width:720px)": { paddingLeft: "2px" },
+                        }}
+                      >
+                        {React.createElement(item.icon, {
+                          sx: {
+                            color: route.includes(item.route)
+                              ? context?.colors.blueDark || ""
+                              : context?.theme === "dark"
+                              ? context.colors.text
+                              : context?.colors.background,
                           },
-                    ]}
-                  />
+                        })}
+                      </IconButton>
+                    </ListItemIcon>
+                    <ListItemText
+                      primary={item.name}
+                      sx={[
+                        open
+                          ? {
+                              opacity: 1,
+                            }
+                          : {
+                              opacity: 0,
+                            },
+                      ]}
+                    />
+                  </Box>
+                  {open && (
+                    <Box sx={{ paddingLeft: "1.8rem" }}>
+                      {item?.childrens?.map((child) => (
+                        <Box
+                          onClick={(e) => {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            navigate(`/dashboard${item.route}${child.route}`);
+                          }}
+                          key={`${item}-${child.name}`}
+                          sx={{
+                            display: "flex",
+                            alignItems: "center",
+                            width: "100%",
+                            cursor: "pointer",
+                          }}
+                        >
+                          <ListItemIcon
+                            sx={[
+                              {
+                                minWidth: 0,
+                                justifyContent: "center",
+                              },
+                              open
+                                ? {
+                                    mr: 3,
+                                  }
+                                : {
+                                    mr: "auto",
+                                  },
+                            ]}
+                          >
+                            <IconButton>
+                              {React.createElement(child.icon, {
+                                sx: {
+                                  color: route.includes(child.route)
+                                    ? context?.colors.blueDark || ""
+                                    : context?.theme === "dark"
+                                    ? context.colors.text
+                                    : context?.colors.background,
+                                  width: "10px",
+                                },
+                              })}
+                            </IconButton>
+                          </ListItemIcon>
+
+                          <Typography
+                            sx={{
+                              color: route.includes(child.route)
+                                ? context?.colors.blueDark || ""
+                                : context?.theme === "dark"
+                                ? context.colors.text
+                                : context?.colors.background,
+
+                              opacity: open ? 1 : 0,
+                              fontSize: "0.8rem",
+                            }}
+                          >
+                            {child.name}
+                          </Typography>
+                        </Box>
+                      ))}
+                    </Box>
+                  )}
                 </ListItemButton>
               </ListItem>
-            </Link>
+            </Box>
           ))}
         </List>
       </Drawer>

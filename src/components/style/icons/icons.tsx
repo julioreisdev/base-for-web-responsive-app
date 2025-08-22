@@ -14,8 +14,14 @@ import FileCopyIcon from "@mui/icons-material/FileCopy";
 import FilePresentIcon from "@mui/icons-material/FilePresent";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import CloseIcon from "@mui/icons-material/Close";
+import HelpCenterIcon from "@mui/icons-material/HelpCenter";
+import WorkspacesIcon from "@mui/icons-material/Workspaces";
+import CircleIcon from "@mui/icons-material/Circle";
 
 const Icons = {
+  CircleIcon,
+  WorkspacesIcon,
+  HelpCenterIcon,
   CloseIcon,
   ArrowBackIcon,
   FilePresentIcon,
