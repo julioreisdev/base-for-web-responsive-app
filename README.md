@@ -96,6 +96,7 @@ Certifique-se de ter o `Node.js` e o `npm` instalados em sua máquina.
 │   ├── 📁 interfaces/
 │   │   ├── 📄 google-oauth.interface.ts
 │   │   ├── 📄 ipinfo.interface.ts
+│   │   ├── 📄 sidebar.interface.ts
 │   │   └── 📄 theme.interface.ts
 │   ├── 📁 pages/
 │   │   ├── 📁 auth/
