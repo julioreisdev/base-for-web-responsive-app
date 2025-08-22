@@ -16,6 +16,7 @@ Este projeto já vem com uma estrutura robusta e funcional, incluindo:
 - **Componentização:** Uma estrutura de componentes organizada, facilitando a reutilização de código e a manutenção.
 - **Context API:** Estrutura de `context` para gerenciar o estado global da aplicação de forma eficiente.
 - **Tecnologias Modernas:** Desenvolvido com **React** e **Vite**, garantindo um ambiente de desenvolvimento rápido e moderno.
+- - **Login Facilitado:** Desenvolvido com o Google OAuth.
 
 ---
 
@@ -65,10 +66,12 @@ Certifique-se de ter o `Node.js` e o `npm` instalados em sua máquina.
 ## Estrutura do Projeto
 
 ```
+├── 📁 .git/ 🚫 (auto-hidden)
 ├── 📁 node_modules/ 🚫 (auto-hidden)
 ├── 📁 src/
 │   ├── 📁 components/
 │   │   ├── 📁 auth/
+│   │   │   ├── 📄 google-oauth.tsx
 │   │   │   ├── 📄 protected-route.tsx
 │   │   │   └── 📄 unprotected-route.tsx
 │   │   ├── 📁 lotties/
@@ -91,6 +94,7 @@ Certifique-se de ter o `Node.js` e o `npm` instalados em sua máquina.
 │   ├── 📁 contexts/
 │   │   └── 📄 global-context.tsx
 │   ├── 📁 interfaces/
+│   │   ├── 📄 google-oauth.interface.ts
 │   │   ├── 📄 ipinfo.interface.ts
 │   │   └── 📄 theme.interface.ts
 │   ├── 📁 pages/
@@ -98,7 +102,7 @@ Certifique-se de ter o `Node.js` e o `npm` instalados em sua máquina.
 │   │   │   ├── 📄 login-page.tsx
 │   │   │   ├── 📄 restore-password-page.tsx
 │   │   │   ├── 📄 sign-up-page.tsx
-│   │   │   └── 📄 verify-code.tsx
+│   │   │   └── 📄 verify-code-page.tsx
 │   │   └── 📁 dashboard/
 │   │       └── 📁 home/
 │   │           └── 📄 index.tsx
@@ -115,11 +119,13 @@ Certifique-se de ter o `Node.js` e o `npm` instalados em sua máquina.
 │   ├── 📄 main.tsx
 │   ├── 📄 router.tsx
 │   └── 📄 vite-env.d.ts
+├── 🔒 .env 🚫 (auto-hidden)
+├── 📄 .env.example
 ├── 🚫 .gitignore
 ├── 📖 README.md
 ├── 📄 eslint.config.js
 ├── 🌐 index.html
-├── 📄 package-lock.json
+├── 📄 package-lock.json 🚫 (auto-hidden)
 ├── 📄 package.json
 ├── 📄 tsconfig.app.json
 ├── 📄 tsconfig.json
